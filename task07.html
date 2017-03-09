@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task07</title>
+	<style>
+		div{
+			margin : 10px 8px;
+			display: flex;
+			border: 1px solid #000;
+			justify-content:  center;
+			flex-grow: 1;
+			background: #efefef;
+		}
+		#container{
+			display: flex;
+			width: 500px;
+			height: 120px;
+			border: 1px solid #000;
+			background: #efefef;
+		}
+
+		#container>div>div>div{
+			align-items: center;
+		}
+		div.active{
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+	Super
+		<div>Cat
+			<div class="active">
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+		<div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+			<div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+    <style type="text/css">
+    *{
+      padding: 0;
+      margin: 0;
+    }
+
+    #api-list{
+      margin:10px;
+    }
+      #api-list li{
+        display: inline-block;
+        background: red;
+        color: #fff;
+        font-size: 20px;
+        padding: 10px;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+<body>
+  <input type="text" name="api-data" id="api-data">
+  <button id="left-in">left-in</button>
+  <button id="right-in">right-in</button>
+  <span></span>
+  <button id="left-out">left-out</button>
+  <button id="right-out">right-out</button>
+  
+  <ul id="api-list">
+    <li>32</li><li>23</li><li>62</li><li>3</li><li>11</li><li>90</li>
+  </ul>
+
+
+
+<script type="text/javascript">
+
+
+function getData() {
+  var ret = [];
+  var oLists = document.getElementById('api-list').getElementsByTagName('li');
+  for (var i = 0; i < oLists.length; i++) {
+    var str = oLists[i].innerHTML;
+    ret.push(str);
+  }
+  return ret;
+  
+}
+
+
+function render() {
+  var ul = document.getElementById('api-list');
+  ul.innerHTML = "";
+  for (var i = 0; i < init.data.length; i++) {
+    var oLi = document.createElement('li');
+    oLi.innerHTML = init.data[i]
+    ul.appendChild(oLi);
+    
+  }
+}
+
+function left_in_handler(e,data) {
+  var val = document.getElementById('api-data').value;
+  init.data.unshift(val);
+  console.log(init.data);
+  render();
+}
+
+function left_out_handler(e,data) {
+  init.data.shift();
+  console.log(init.data)
+  render();
+}
+
+function right_in_handler(e,data) {
+  var val = document.getElementById('api-data').value;
+  init.data.push(val);
+  render();
+}
+
+function right_out_handler(e,data) {
+  init.data.pop();
+  render();
+}
+
+
+function init() {
+  var thiss = arguments.callee;
+  if(!thiss.data) thiss.data = getData();
+  document.getElementById('left-in').addEventListener('click',function(e){left_in_handler(e,thiss.data)},false);
+  document.getElementById('left-out').addEventListener('click',function(e){left_out_handler(e,thiss.data)},false);
+  document.getElementById('right-in').addEventListener('click',function(e){right_in_handler(e,thiss.data)},false);
+  document.getElementById('right-out').addEventListener('click',function(e){right_out_handler(e,thiss.data)},false);
+}
+
+init();
+
+</script>
+</body>
+</html>
+
+
